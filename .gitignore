@@ -40,3 +40,6 @@ prisma/migrations/**/migration_lock.toml
 
 # Optional: if you generate docs
 docs/.vitepress/cache/
+
+# Personal notes
+docs/
