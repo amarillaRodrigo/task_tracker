@@ -12,11 +12,22 @@ export function createTasksRepo(prisma: PrismaClient) {
     },
 
     create(data: CreateTaskInput) {
-      return prisma.task.create({ data });
+      return prisma.task.create({
+        data: {
+          description: data.description,
+          ...(data.status && { status: data.status }),
+        },
+      });
     },
 
     update(id: string, data: UpdateTaskInput) {
-      return prisma.task.update({ where: { id }, data });
+      return prisma.task.update({
+        where: { id },
+        data: {
+          ...(data.description !== undefined && { description: data.description }),
+          ...(data.status !== undefined && { status: data.status }),
+        },
+      });
     },
 
     delete(id: string) {
