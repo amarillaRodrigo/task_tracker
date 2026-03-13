@@ -60,6 +60,25 @@ export default function TaskBoard({ initialTasks }: TaskBoardProps) {
 
   return (
     <div className="px-4 pb-32">
+      <div className="flex items-center gap-3 mb-4 px-1">
+        <span className="flex items-center gap-1.5 text-zinc-600 text-xs">
+          <span className="w-3 h-3 rounded-full border border-zinc-600 inline-block" />
+          todo
+        </span>
+        <span className="text-zinc-700 text-xs">·</span>
+        <span className="flex items-center gap-1.5 text-zinc-600 text-xs">
+          <span className="w-3 h-3 rounded-full border border-orange-400 inline-flex items-center justify-center">
+            <span className="w-1.5 h-1.5 rounded-full bg-orange-400 inline-block" />
+          </span>
+          in progress
+        </span>
+        <span className="text-zinc-700 text-xs">·</span>
+        <span className="flex items-center gap-1.5 text-zinc-600 text-xs">
+          <span className="w-3 h-3 rounded-full bg-green-500 inline-block" />
+          done
+        </span>
+      </div>
+
       {tasks.length === 0 && !showInput && (
         <p className="text-center text-zinc-600 text-sm py-8">
           No tasks yet. Tap + to add one.
