@@ -32,13 +32,27 @@ export default function TaskBoard({ initialTasks }: TaskBoardProps) {
   async function handleToggle(task: Task) {
     const nextStatus =
       task.status === "DONE" ? "TODO" : task.status === "TODO" ? "IN_PROGRESS" : "DONE";
-    const updated = await tasksApi.update(task.id, { status: nextStatus });
-    setTasks((prev) => prev.map((t) => (t.id === updated.id ? updated : t)));
+    setTasks((prev) =>
+      prev.map((t) => (t.id === task.id ? { ...t, status: nextStatus } : t))
+    );
+    try {
+      const updated = await tasksApi.update(task.id, { status: nextStatus });
+      setTasks((prev) => prev.map((t) => (t.id === updated.id ? updated : t)));
+    } catch {
+      setTasks((prev) => prev.map((t) => (t.id === task.id ? task : t)));
+    }
   }
 
   async function handleDelete(id: string) {
-    await tasksApi.delete(id);
     setTasks((prev) => prev.filter((t) => t.id !== id));
+    try {
+      await tasksApi.delete(id);
+    } catch {
+      setTasks((prev) => {
+        const task = tasks.find((t) => t.id === id);
+        return task ? [...prev, task] : prev;
+      });
+    }
   }
 
   const pending = tasks.filter((t) => t.status !== "DONE");

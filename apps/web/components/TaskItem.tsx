@@ -15,7 +15,7 @@ export default function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
     <div className="flex items-center gap-3 px-4 py-3.5 bg-zinc-900 rounded-2xl group">
       <button
         onClick={() => onToggle(task)}
-        className="shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-200"
+        className="shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-200 hover:scale-110 hover:border-green-500 hover:bg-green-500/20"
         style={{
           borderColor: isDone ? "#22c55e" : "#3f3f46",
           backgroundColor: isDone ? "#22c55e" : "transparent",
