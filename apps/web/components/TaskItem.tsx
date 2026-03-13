@@ -1,6 +1,6 @@
 "use client";
 
-import type { Task } from "@task-tracker/core";
+import type { Task } from "@/lib/types";
 
 interface TaskItemProps {
   task: Task;

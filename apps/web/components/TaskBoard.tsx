@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { Task } from "@task-tracker/core";
+import type { Task } from "@/lib/types";
 import { tasksApi } from "@/lib/api";
 import TaskItem from "./TaskItem";
 

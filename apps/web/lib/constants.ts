@@ -1,4 +1,4 @@
-import type { TaskStatus } from "@task-tracker/core";
+import type { TaskStatus } from "@/lib/types";
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000/api";
 

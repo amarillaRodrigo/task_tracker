@@ -1,4 +1,4 @@
-import type { Task, CreateTaskInput, UpdateTaskInput } from "@task-tracker/core";
+import type { Task, CreateTaskInput, UpdateTaskInput } from "@/lib/types";
 import { API_URL } from "./constants";
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
