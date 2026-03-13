@@ -60,7 +60,7 @@ export default function TaskBoard({ initialTasks }: TaskBoardProps) {
 
   return (
     <div className="px-4 pb-32">
-      <div className="flex items-center gap-3 mb-4 px-1">
+      <div className="flex items-center justify-center gap-4 mb-6">
         <span className="flex items-center gap-1.5 text-zinc-600 text-xs">
           <span className="w-3 h-3 rounded-full border border-zinc-600 inline-block" />
           todo
