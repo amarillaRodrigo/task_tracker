@@ -10,21 +10,25 @@ interface TaskItemProps {
 
 export default function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
   const isDone = task.status === "DONE";
+  const isInProgress = task.status === "IN_PROGRESS";
+
+  const borderColor = isDone ? "#22c55e" : isInProgress ? "#fb923c" : "#3f3f46";
+  const bgColor = isDone ? "#22c55e" : isInProgress ? "rgba(251,146,60,0.2)" : "transparent";
 
   return (
     <div className="flex items-center gap-3 px-4 py-3.5 bg-zinc-900 rounded-2xl group">
       <button
         onClick={() => onToggle(task)}
         className="shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-200 hover:scale-110 hover:border-green-500 hover:bg-green-500/20"
-        style={{
-          borderColor: isDone ? "#22c55e" : "#3f3f46",
-          backgroundColor: isDone ? "#22c55e" : "transparent",
-        }}
+        style={{ borderColor, backgroundColor: bgColor }}
       >
         {isDone && (
           <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
+        )}
+        {isInProgress && (
+          <div className="w-2 h-2 rounded-full bg-orange-400" />
         )}
       </button>
 
